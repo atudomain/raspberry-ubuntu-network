@@ -23,12 +23,12 @@ network:
               metric: 10
 
     vlans:
-        vlan10:
+        default-vlan:
             accept-ra: no
-            id: 10
+            id: {{ VLAN_ID }}
             link: eth0
 
     bridges:
         br-internal:
             addresses: [ {{ INTERNAL_ADDRESS_WITH_MASK }} ]
-            interfaces: [ vlan10 ]
+            interfaces: [ default-vlan ]

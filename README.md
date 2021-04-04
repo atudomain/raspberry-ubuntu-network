@@ -38,5 +38,5 @@ ansible-playbook -i 'username@ipv6address%interface,' network.yaml
 
 The device should now be reachable via:
  - local network using wifi
- - internal network using ethernet and vlan 10
+ - internal network using ethernet and vlan VLAN_ID
  - direct connection using ethernet and DHCP
