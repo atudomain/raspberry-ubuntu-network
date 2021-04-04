@@ -1,0 +1,5 @@
+---
+name: Set nework on Ubuntu 20.04 Raspberry Pi device
+become: True
+roles:
+  - raspberry_network
