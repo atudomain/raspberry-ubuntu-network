@@ -1,0 +1,34 @@
+network:
+    version: 2
+
+    ethernets:
+        eth0:
+            dhcp4: true
+            optional: true
+
+    wifis:
+        wlan0:
+            optional: true
+            access-points:
+                "{{ WIFI_NETWORK }}":
+                    password: "{{ WIFI_PASSWORD }}"
+            dhcp4: false
+            addresses: [ {{ LOCAL_ADDRESS_WITH_MASK }} ]
+            gateway4: {{ LOCAL_GATEWAY_ADDRESS }}
+            nameservers:
+                addresses: [ {{ DNS_ADDRESSES }} ]
+            routes:
+            - to: 0.0.0.0/0
+              via: {{ LOCAL_GATEWAY_ADDRESS }}
+              metric: 10
+
+    vlans:
+        vlan10:
+            accept-ra: no
+            id: 10
+            link: eth0
+
+    bridges:
+        br-internal:
+            addresses: [ {{ INTERNAL_ADDRESS_WITH_MASK }} ]
+            interfaces: [ vlan10 ]

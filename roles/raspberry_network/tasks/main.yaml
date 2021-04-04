@@ -1,0 +1,12 @@
+---
+- name: Copy and fill interfaces template
+  template:
+    src: 50-cloud-init.yaml
+    dest: /etc/netplan/50-cloud-init.yaml
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: Apply netplan
+  shell: netplan apply
